@@ -1,0 +1,28 @@
+<%- include("partials/head.ejs") %>
+
+<%- include("partials/nav.ejs") %>
+
+<div class="container pt-3">
+    <h1>My Products</h1>
+
+    <% if (hasProducts) { %>
+        <div class="card-columns">
+        <% products.map(product => { %>
+            <div class="card border-dark">
+                <img src="https://via.placeholder.com/200x100?text=Product" class="card-img-top">
+                <div class="card-body text-dark">
+                    <h5 class="card-title"><%= product.title.toUpperCase() %></h5>
+                    <p class="card-text">Description...</p>
+                    <a href="#" class="btn btn-secondary">Buy</a>
+                </div>
+            </div>
+        <% }) %>
+        </div>
+    <% } else { %>
+        <p>No Product Available!</p>
+    <% } %>
+
+</div>
+
+<%- include("partials/foot.ejs") %>
+
