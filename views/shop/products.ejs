@@ -1,0 +1,21 @@
+<%- include("../partials/head.ejs") %>
+
+<%- include("../partials/nav.ejs") %>
+
+<div class="container pt-3">
+    <h1>My Products</h1>
+
+    <% if (hasProducts) { %>
+        <div class="card-deck">
+            <% products.map(product => { %>
+                <%- include("../partials/product.ejs", {product: product}) %>
+            <% }) %>
+        </div>
+    <% } else { %>
+        <p>No Product Available!</p>
+    <% } %>
+
+</div>
+
+<%- include("../partials/foot.ejs") %>
+
