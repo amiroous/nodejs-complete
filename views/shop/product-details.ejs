@@ -1,0 +1,25 @@
+<%- include("../partials/head.ejs") %>
+
+<%- include("../partials/nav.ejs") %>
+
+<div class="container pt-3">
+
+    <div class="card border-info">
+        <h5 class="card-header text-white bg-info"><%= product.title %></h5>
+        <img src="<%= product.imageUrl %>" class="card-img-top" alt="<%= product.title %>">
+        <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text"><%= product.description %></p>
+
+            <%- include("../partials/add-to-cart-cta.ejs", {product: product}) %>
+
+            <a href="/" class="btn btn-primary" type="button">
+                Back to Shop
+            </a>
+        </div>
+    </div>
+
+</div>
+
+<%- include("../partials/foot.ejs") %>
+

@@ -4,6 +4,62 @@
 
 <div class="container pt-3">
     <h1>Cart</h1>
+
+    <% if(products.length) { %>
+
+        <table class="table table-hover">
+            <thead>
+            <tr class="table-info">
+                <th scope="col">#</th>
+                <th scope="col">Product</th>
+                <th scope="col">Qty</th>
+                <th scope="col">Price</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <% products.map((product, index) => { %>
+                <tr>
+                    <th scope="row"><%- index %></th>
+                    <td class="align-middle"><%- product.title %></td>
+                    <td class="align-middle">
+                        <input type="number" step="1" class="form-control" id="qty" value="<%- product.qty %>">
+                    </td>
+                    <td class="align-middle">$<%- product.price * product.qty %></td>
+                    <td class="align-middle">
+                        <form class="d-inline-flex" action="/cart-update-item" method="post">
+                            <input type="hidden" id="productId" name="productId" value="<%= product.id %>" />
+                            <button type="submit" class="btn btn-sm btn-outline-primary" disabled>Update</button>
+                        </form>
+                        <form class="d-inline-flex" action="/cart-delete-item" method="post">
+                            <input type="hidden" id="productId" name="productId" value="<%= product.id %>" />
+                            <button type="submit" class="btn btn-sm btn-outline-danger">Remove</button>
+                        </form>
+                    </td>
+                </tr>
+
+            <% }) %>
+
+            <tr>
+                <th scope="row"> Total Price</th>
+                <td class="align-middle"></td>
+                <td class="align-middle"></td>
+                <td class="align-middle"><span class="font-weight-bold">$<%= totalPrice %></span></td>
+                <td class="align-middle"></td>
+            </tr>
+
+            </tbody>
+        </table>
+
+    <% } else { %>
+
+        <div class="alert alert-secondary" role="alert">
+            No Product Found in the Shopping Cart!
+        </div>
+
+    <% } %>
+
 </div>
 
 <%- include("../partials/foot.ejs") %>

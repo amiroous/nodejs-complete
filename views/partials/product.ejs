@@ -5,15 +5,15 @@
 
         <div class="card-body text-dark">
 
-            <h5 class="card-title"><%= product.title.toUpperCase() %></h5>
+            <h5 class="card-title">
+                <%= product.title.toUpperCase() %>
+                <span class="badge badge-pill badge-secondary font-weight-light"> $<%= product.price %></span>
+            </h5>
 
             <p class="card-text"><%= product.description %></p>
 
-            <form action="/add-to-cart" method="post" class="d-inline">
-                <button type="button" class="btn btn-outline-info">
-                    Add to Cart for <span class="badge badge-info" type="submit">$<%= product.price %></span>
-                </button>
-            </form>
+            <a href="/products/<%= product.id %>" type="button" class="btn btn-outline-primary">Details</a>
+            <%- include("../partials/add-to-cart-cta.ejs", {product: product}) %>
 
         </div>
 

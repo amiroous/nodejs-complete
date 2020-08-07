@@ -18,4 +18,4 @@ app.use('/admin', adminRoutes);
 app.use(shopRoutes);
 app.use(errorRoutes);
 
-app.listen(3000);
+app.listen(3300);
